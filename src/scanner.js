@@ -1,26 +1,42 @@
-const { JSDOM } = require("jsdom");
+const puppeteer = require('puppeteer');
 
-const scan = (htmlContent) => {
-  // Simulate the DOM using JSDOM
-  const dom = new JSDOM(htmlContent);
-  const document = dom.window.document;
+const scan = async (url) => {
+  if (!url) {
+    throw new Error('Invalid URL: The URL cannot be empty.');
+  }
 
-  const elements = document.querySelectorAll("*");
-  const zIndexMap = [];
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
 
-  elements.forEach((el) => {
-    const zIndex = dom.window.getComputedStyle(el).zIndex; // Use dom.window here
-    if (zIndex !== "auto" && !isNaN(Number(zIndex))) {
-      zIndexMap.push({
-        element: el.tagName,
-        id: el.id,
-        classList: [...el.classList].join("."),
-        zIndex: Number(zIndex),
+  try {
+    await page.goto(url, { waitUntil: 'networkidle2' });
+
+    const zIndexMap = await page.evaluate(() => {
+      const elements = document.querySelectorAll('*');
+      const zIndexData = [];
+
+      elements.forEach((el) => {
+        const zIndex = window.getComputedStyle(el).zIndex;
+        if (zIndex !== 'auto' && !isNaN(Number(zIndex))) {
+          zIndexData.push({
+            element: el.tagName,
+            id: el.id || null,
+            classList: [...el.classList].join('.') || null,
+            zIndex: Number(zIndex),
+          });
+        }
       });
-    }
-  });
 
-  return zIndexMap.sort((a, b) => b.zIndex - a.zIndex);
+      return zIndexData.sort((a, b) => b.zIndex - a.zIndex);
+    });
+
+    return zIndexMap;
+  } catch (error) {
+    console.error('Error during page scan:', error.message);
+    throw error;
+  } finally {
+    await browser.close();
+  }
 };
 
 module.exports = { scan };

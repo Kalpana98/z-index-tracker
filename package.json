@@ -1,25 +1,22 @@
 {
   "name": "z-index-tracker",
-  "version": "0.0.1",
-  "main": "index.js",
+  "version": "0.0.2",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"No tests specified. Add test cases.\" && exit 0"
+    "test": "echo \"No tests specified. Add test cases.\" && exit 0",
+    "start": "node bin/cli.js"
   },
   "bin": {
     "z-index-tracker": "./bin/cli.js"
   },
-  "keywords": [
-    "z-index",
-    "css",
-    "html"
-  ],
+  "keywords": ["z-index", "css", "html"],
   "author": "Kalpana Upadhyay <kalpanaupadhyay.dev@gmail.com>",
   "license": "MIT",
   "description": "Track and visualize all z-index values in a project",
   "dependencies": {
     "chalk": "^4.1.2",
     "commander": "^13.0.0",
-    "jsdom": "^26.0.0"
+    "puppeteer": "^24.0.0"
   },
   "repository": {
     "type": "git",
@@ -30,10 +27,11 @@
   },
   "homepage": "https://github.com/Kalpana98/z-index-tracker#readme",
   "files": [
-    "index.js",
-    "README.md",
-    "package.json",
+    "bin/",
     "src/",
-    "tests/"
-  ]
+    "tests/",
+    "README.md",
+    "package.json"
+  ],
+  "devDependencies": {}
 }

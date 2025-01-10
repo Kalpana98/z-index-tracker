@@ -1,31 +1,38 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
-const { Command } = require("commander");
-const { scan } = require("../src/scanner");
-const { displayResults } = require("../src/display");
+
+const { Command } = require('commander');
+const path = require('path');
+const chalk = require('chalk');
+const { scan } = require('../src/scanner');
+const { displayResults } = require('../src/display');
 
 const program = new Command();
 
 program
-  .version("1.0.0")
-  .description("Track and display all z-index values in your application");
+  .name('z-index-tracker')
+  .description('Track z-indexes from a webpage or local HTML file')
+  .version('0.0.2');
 
 program
-  .command("scan <file>")
-  .description("Scan a webpage or HTML file for z-index values")
-  .action((file) => {
-    const filePath = path.resolve(file);
+  .command('scan <input>')
+  .description('Scan z-indexes from a webpage or local HTML file')
+  .action(async (input) => {
+    try {
+      let url = input.trim();
 
-    // Read the HTML content
-    if (!fs.existsSync(filePath)) {
-      console.error(`File not found: ${filePath}`);
-      process.exit(1);
+      if (!url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('file://')) {
+        const absoluteFilePath = path.resolve(url);
+        url = 'file://' + absoluteFilePath;
+        console.log('Scanning local file:', url);
+      } else {
+        console.log('Scanning URL:', url);
+      }
+
+      const zIndexData = await scan(url);
+      displayResults(zIndexData);
+    } catch (error) {
+      console.error(chalk.red('Error:', error.message));
     }
-
-    const htmlContent = fs.readFileSync(filePath, "utf-8");
-    const results = scan(htmlContent); // Pass the HTML content to `scan`
-    displayResults(results);
   });
 
 program.parse(process.argv);
