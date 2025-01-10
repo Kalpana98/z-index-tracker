@@ -1,0 +1,39 @@
+{
+  "name": "z-index-tracker",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "z-index-tracker": "./bin/cli.js"
+  },
+  "keywords": [
+    "z-index",
+    "css",
+    "html"
+  ],
+  "author": "Kalpana Upadhyay <kalpanaupadhyay.dev@gmail.com>",
+  "license": "MIT",
+  "description": "Track and visualize all z-index values in a project",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^13.0.0",
+    "jsdom": "^26.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kalpana98/z-index-tracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kalpana98/z-index-tracker/issues"
+  },
+  "homepage": "https://github.com/Kalpana98/z-index-tracker#readme",
+  "files": [
+    "index.js",
+    "README.md",
+    "package.json",
+    "src/",
+    "tests/"
+  ]
+}
