@@ -3,15 +3,15 @@
 const { Command } = require('commander');
 const path = require('path');
 const chalk = require('chalk');
-const { scan } = require('../src/scanner');
-const { displayResults } = require('../src/display');
+const package = require('../package.json');
+const { scan, displayResults } = require('../src');
 
 const program = new Command();
 
 program
   .name('z-index-tracker')
   .description('Track z-indexes from a webpage or local HTML file')
-  .version('0.0.4');
+  .version(package.version);
 
 program
   .command('scan <input>')

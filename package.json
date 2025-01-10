@@ -1,7 +1,7 @@
 {
   "name": "z-index-tracker",
-  "version": "0.0.4",
-  "main": "src/index.js",
+  "version": "0.0.5",
+  "main": "./bin/cli.js",
   "scripts": {
     "test": "jest"
   },
