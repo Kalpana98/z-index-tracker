@@ -11,7 +11,7 @@ const program = new Command();
 program
   .name('z-index-tracker')
   .description('Track z-indexes from a webpage or local HTML file')
-  .version('0.0.2');
+  .version('0.0.3');
 
 program
   .command('scan <input>')

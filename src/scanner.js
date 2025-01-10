@@ -1,3 +1,4 @@
+const chalk = require('chalk');
 const puppeteer = require('puppeteer');
 
 const scan = async (url) => {
@@ -32,7 +33,6 @@ const scan = async (url) => {
 
     return zIndexMap;
   } catch (error) {
-    console.error('Error during page scan:', error.message);
     throw error;
   } finally {
     await browser.close();

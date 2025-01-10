@@ -1,15 +1,18 @@
 {
   "name": "z-index-tracker",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"No tests specified. Add test cases.\" && exit 0",
-    "start": "node bin/cli.js"
+    "test": "jest"
   },
   "bin": {
-    "z-index-tracker": "./bin/cli.js"
+    "z-index-tracker": "src/index.js"
   },
-  "keywords": ["z-index", "css", "html"],
+  "keywords": [
+    "z-index",
+    "css",
+    "html"
+  ],
   "author": "Kalpana Upadhyay <kalpanaupadhyay.dev@gmail.com>",
   "license": "MIT",
   "description": "Track and visualize all z-index values in a project",
@@ -33,5 +36,7 @@
     "README.md",
     "package.json"
   ],
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }
