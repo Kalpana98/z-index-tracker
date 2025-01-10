@@ -6,7 +6,7 @@
     "test": "jest"
   },
   "bin": {
-    "z-index-tracker": "src/index.js"
+    "z-index-tracker": "./bin/cli.js"
   },
   "keywords": [
     "z-index",
