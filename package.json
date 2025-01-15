@@ -1,6 +1,6 @@
 {
   "name": "z-index-tracker",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "main": "./bin/cli.js",
   "scripts": {
     "test": "jest"
@@ -11,11 +11,19 @@
   "keywords": [
     "z-index",
     "css",
-    "html"
+    "html",
+    "dom",
+    "http",
+    "https",
+    "cli",
+    "puppeteer",
+    "commander",
+    "chalk",
+    "jest"
   ],
   "author": "Kalpana Upadhyay <kalpanaupadhyay.dev@gmail.com>",
   "license": "MIT",
-  "description": "Track and visualize all z-index values in a project",
+  "description": "Scan and Analyze z-indexes",
   "dependencies": {
     "chalk": "^4.1.2",
     "commander": "^13.0.0",

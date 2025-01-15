@@ -1,4 +1,3 @@
-const chalk = require('chalk');
 const puppeteer = require('puppeteer');
 
 const scan = async (url) => {
